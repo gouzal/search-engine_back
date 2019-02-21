@@ -28,7 +28,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Publication implements Serializable {
+public class Publication extends Auditable<Integer> implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id

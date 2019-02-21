@@ -1,5 +1,6 @@
 package com.micda.g2.searchengine.model;
 
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +23,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class PublicationKeyword {
+public class PublicationKeyword  extends Auditable<Integer> implements Serializable  {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id

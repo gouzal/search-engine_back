@@ -1,5 +1,6 @@
 package com.micda.g2.searchengine.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class PublicationState {
+public class PublicationState  extends Auditable<Integer> implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id

@@ -19,7 +19,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Collaboration {
+public class Collaboration extends Auditable<Integer>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

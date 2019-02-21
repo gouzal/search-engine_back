@@ -23,7 +23,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public abstract class Person implements Serializable {
+public abstract class Person extends Auditable<Integer>implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

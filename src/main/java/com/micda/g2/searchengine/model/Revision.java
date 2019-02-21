@@ -1,5 +1,6 @@
 package com.micda.g2.searchengine.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Revision {
+public class Revision  extends Auditable<Integer> implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

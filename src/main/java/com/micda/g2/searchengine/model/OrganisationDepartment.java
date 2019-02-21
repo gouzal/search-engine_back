@@ -22,7 +22,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class OrganisationDepartment {
+public class OrganisationDepartment  extends Auditable<Integer> {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id

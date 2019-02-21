@@ -25,7 +25,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Department implements Serializable {
+public class Department extends Auditable<Integer> implements Serializable {
 
     private static final long serialVersionUID = 8523846849113972991L;
 
@@ -41,11 +41,11 @@ public class Department implements Serializable {
     @Setter
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "department")
     //@JoinColumn(name = "department_id")
-    private List<Person> persons=new ArrayList<>();
+    private List<Person> persons = new ArrayList<>();
 
     @Setter
     @Getter
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "department", fetch = FetchType.LAZY)
-    private List<OrganisationDepartment> organisationDepartments=new ArrayList<>();
+    private List<OrganisationDepartment> organisationDepartments = new ArrayList<>();
 
 }

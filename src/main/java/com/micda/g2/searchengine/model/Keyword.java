@@ -17,7 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Keyword {
+public class Keyword  extends Auditable<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
