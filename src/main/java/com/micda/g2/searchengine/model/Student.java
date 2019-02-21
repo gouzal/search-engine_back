@@ -9,19 +9,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString(callSuper=true, includeFieldNames=true)
-@EqualsAndHashCode
+@ToString(callSuper = true, includeFieldNames = true)
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Student extends Person {
-	private static final long serialVersionUID = 4584595397027699062L;
-	
-	@Getter
-	@Setter
-	private String level;
-	@Getter
-	@Setter
-	private String diploma;
+
+    private static final long serialVersionUID = 4584595397027699062L;
+
+    @Getter
+    @Setter
+    private String level;
+    @Getter
+    @Setter
+    private String diploma;
 
 }

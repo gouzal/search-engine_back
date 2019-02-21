@@ -19,12 +19,12 @@ import lombok.ToString;
 @Entity
 public class Keyword {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Getter
-	@Setter
-	private int id;
-	@Getter
-	@Setter
-	private String value;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
+    private int id;
+    @Getter
+    @Setter
+    private String value;
 }

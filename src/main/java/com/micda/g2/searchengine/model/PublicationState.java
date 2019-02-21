@@ -19,12 +19,12 @@ import lombok.ToString;
 @Entity
 public class PublicationState {
 
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Id
-	@Getter
-	@Setter
-	private int id;
-	@Getter
-	@Setter
-	private String value;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @Getter
+    @Setter
+    private int id;
+    @Getter
+    @Setter
+    private String value;
 }

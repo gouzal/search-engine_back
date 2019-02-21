@@ -1,14 +1,11 @@
 package com.micda.g2.searchengine.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -18,23 +15,25 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class OrganisationDepartment {
+public class Collaboration {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @Setter
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
+    @Setter
     private int id;
-    @Setter
     @Getter
-    @ManyToOne(targetEntity = Organisation.class)
-    private Organisation organisation;
     @Setter
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
     @Getter
-    @ManyToOne(targetEntity = Department.class)
-    private Department department;
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "publication_id")
+    private Publication publication;
 }

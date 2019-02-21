@@ -9,18 +9,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString(callSuper=true, includeFieldNames=true)
+/**
+ *
+ * @author Larbi
+ */
+@ToString(callSuper = true, includeFieldNames = true)
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Officer extends Employee {
-	private static final long serialVersionUID = 1L;
-	
-	@Getter
-	@Setter
-	private String role;
-	
-	
 
+    private static final long serialVersionUID = 1L;
+    @Getter
+    @Setter
+    private String role;
 }

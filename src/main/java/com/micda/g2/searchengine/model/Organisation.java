@@ -1,9 +1,17 @@
 package com.micda.g2.searchengine.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -13,32 +21,35 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Organisation {
+public class Organisation implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Setter
-	@Getter
-	private int id;
-	@Setter
-	@Getter
-	private String name;
-	@Setter
-	@Getter
-	private String adress;
-	@Setter
-	@Getter
-	private String tel;
-	@Setter
-	@Getter
-	private String website;
-	@Setter
-	@Getter
-	private String email;
-	
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter
+    @Getter
+    private int id;
+    @Setter
+    @Getter
+    private String name;
+    @Setter
+    @Getter
+    private String adress;
+    @Setter
+    @Getter
+    private String tel;
+    @Setter
+    @Getter
+    private String website;
+    @Setter
+    @Getter
+    private String email;
+    @Setter
+    @Getter
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "organisation", fetch = FetchType.EAGER)
+    private List<OrganisationDepartment> organisationDepartments = new ArrayList<>();
+
 }
