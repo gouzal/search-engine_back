@@ -1,4 +1,4 @@
-package com.micda.g2.searchengine.searchengine;
+package com.micda.g2.searchengine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
