@@ -17,7 +17,6 @@ import lombok.ToString;
 public class Student extends Person {
 
     private static final long serialVersionUID = 4584595397027699062L;
-
     @Getter
     @Setter
     private String level;
