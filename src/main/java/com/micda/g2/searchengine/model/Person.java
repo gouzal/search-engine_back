@@ -20,8 +20,8 @@ import lombok.ToString;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person implements Serializable {
-	
+public abstract class Person implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,7 +48,7 @@ public class Person implements Serializable {
 	@NotEmpty
 	@NotNull
 	protected String email;
-	@Getter	
+	@Getter
 	@Setter
 	@NotEmpty
 	@NotNull
@@ -62,12 +62,11 @@ public class Person implements Serializable {
 	@Setter
 	@NotEmpty
 	@NotNull
-	protected boolean isValide=false;
+	protected boolean isValide = false;
 	@Getter
 	@Setter
 	@NotEmpty
 	@NotNull
-	protected boolean isActive=false;
-	
-	
+	protected boolean isActive = false;
+
 }
