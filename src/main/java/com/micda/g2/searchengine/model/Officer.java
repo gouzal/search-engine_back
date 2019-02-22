@@ -16,7 +16,7 @@ public class Officer extends Employee {
 	
 	@Getter
 	@Setter
-	protected String role;
+	private String role;
 	
 	
 
