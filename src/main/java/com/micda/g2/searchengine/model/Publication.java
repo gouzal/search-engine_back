@@ -3,10 +3,14 @@ package com.micda.g2.searchengine.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -45,4 +49,10 @@ public class Publication {
 	@Getter
 	@Setter
 	private boolean isPublished=false;
+	@Getter
+	@Setter
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="state_id")
+	private PublicationState state;
+	
 }
