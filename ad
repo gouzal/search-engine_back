@@ -1,0 +1,174 @@
+[33mcommit 3af642d82bd1ebaadc88dcbfd2707e40e56f7310[m[33m ([m[1;36mHEAD -> [m[1;32mlocal[m[33m)[m
+Author: DonHamzovic <Don.hamzovic@gmail.com>
+Date:   Thu Mar 14 23:24:45 2019 +0100
+
+    fix Typos in README File
+
+[33mcommit 843cece7c6d080f7a07294001f8cf130f95decce[m[33m ([m[1;31morigin/local[m[33m)[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Fri Feb 22 14:52:02 2019 -0800
+
+    local changes
+
+[33mcommit 5e18d9f0a9089711187d36ff92d01ed513b04f6e[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Fri Feb 22 10:14:47 2019 -0800
+
+    remove unused imports and add serialID
+
+[33mcommit 503bb154a7cccca6b650fdf85d054020b38cb106[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Fri Feb 22 10:08:32 2019 -0800
+
+    add repositories interfaces for entities
+
+[33mcommit fbc745e12b30018c296265f7a6b5f03f902fdfc2[m
+Author: Larbi Gouzal <you@example.com>
+Date:   Fri Feb 22 00:13:05 2019 +0100
+
+    add Auditing to Tables
+
+[33mcommit 074ccdc691d6def134c50c8fda87f367c844a3b1[m
+Author: Larbi Gouzal <you@example.com>
+Date:   Thu Feb 21 23:48:13 2019 +0100
+
+    fix multiple issues that prevent project to work
+
+[33mcommit 8c691ad473e4576ed7d983fc7518373b116bf1bd[m
+Author: Larbi Gouzal <you@example.com>
+Date:   Thu Feb 21 20:33:46 2019 +0100
+
+    fix application.properties issue
+
+[33mcommit bdeef6832a2476482d73c65dd4086306af47140c[m
+Author: Larbi Gouzal <you@example.com>
+Date:   Thu Feb 21 20:32:51 2019 +0100
+
+    fix Pom.xml issue
+
+[33mcommit 93a5e474a2cf8bda4f257b0af75d1f545da021ce[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 18:30:38 2019 -0800
+
+    add Entity to Models
+
+[33mcommit 521b3c43b199d371fa79cadc5abb6701c04daa3a[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 17:41:16 2019 -0800
+
+    add Revision model
+
+[33mcommit e45fa6d975e235325ff6c39e8bdcfc64e0c3af9f[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 17:18:17 2019 -0800
+
+    add more properties to Publication Class
+
+[33mcommit 73e0939223b8083b45610ebe4531cd0e53231e73[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 17:13:25 2019 -0800
+
+    ...
+
+[33mcommit 69c467613b0dabb6fcacab592a1948846c16ec81[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 17:12:54 2019 -0800
+
+    add PublicationKeyword Model
+
+[33mcommit a72a354559590af3cea230f0df0f0f9a68e0acf8[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 17:02:50 2019 -0800
+
+    add Publication & PublicationSate model
+
+[33mcommit ee20f6f1f061aab5de33cc5e8b9b98f1b0ab8c2e[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:53:33 2019 -0800
+
+    add Keyword model
+
+[33mcommit 675a7ae39ff874d15e4d384a681d7e2e5be03048[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:47:26 2019 -0800
+
+    add intermidate OrganisationDepartment Model
+
+[33mcommit cd85adc88bb489b29d2b7561fcd23c1881af78ad[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:34:22 2019 -0800
+
+    add Department Model
+
+[33mcommit 944be44e7b32cc84da425e6168781619f1873ae6[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:28:34 2019 -0800
+
+    add Organisation and Student Models
+
+[33mcommit ec1eedd35d2cefc0d749ec0260475a91a3be86a5[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:16:56 2019 -0800
+
+    change variable scope in Officer model
+
+[33mcommit 9994c6af633a1a6f12a94cba80618512ae12a83d[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:16:07 2019 -0800
+
+    add Professor Model
+
+[33mcommit b7fffa449b163a02c7ab84c37552b9558d7394c8[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:12:48 2019 -0800
+
+    add model Officer
+
+[33mcommit 31c3902bd19dac36859ad39a970e83dc8366dc38[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:08:47 2019 -0800
+
+    add Employee Model
+
+[33mcommit 490b176d42cf7a5a91ff781b6f925dcc1121aa98[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 16:08:22 2019 -0800
+
+    ...
+
+[33mcommit 7eb78b981f3fe34eab30cd71cb7a1ed17ba8739b[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 15:59:47 2019 -0800
+
+    add Person Model
+
+[33mcommit 31fec5b65b5b02e921958add46ad46d226d4bb77[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 15:18:42 2019 -0800
+
+    set project files structure
+
+[33mcommit fb65e3d7ab4586a9011551a52f1c0cc0204553b0[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Thu Feb 21 15:05:32 2019 -0800
+
+    change package name
+
+[33mcommit 1381c417758421a050926dea4a9143285cb979b6[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/QA[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: f7fe0a4 80be056
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Wed Feb 20 17:47:52 2019 -0800
+
+    fix .gitignore merge conflict
+
+[33mcommit f7fe0a44972b82a13b3a3a86b1dd424928df4081[m
+Author: Larbi Gouzal <larbi-inco@live.fr>
+Date:   Wed Feb 20 17:41:58 2019 -0800
+
+    spring boot skeleton with initial dependencies
+
+[33mcommit 80be0561b4a4f25b5ce1b3635577505057f12e2c[m
+Author: gouzal <larbi-inco@live.fr>
+Date:   Sat Feb 2 15:50:56 2019 +0100
+
+    Initial commit
