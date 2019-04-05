@@ -1,6 +1,8 @@
 package com.micda.g2.searchengine.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -9,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -19,45 +22,42 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-@EqualsAndHashCode
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-public abstract class Person extends Auditable<Integer>implements Serializable {
+@Setter @Getter @AllArgsConstructor @NoArgsConstructor
+public  class Person extends Auditable<Integer>implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     protected int id;
-    @Getter
-    @Setter
+    
     protected String firstName;
-    @Getter
-    @Setter
     protected String lastName;
-    @Getter
-    @Setter
     protected char gendre;
-    @Getter
-    @Setter
     protected String email;
-    @Getter
-    @Setter
     protected String password;
-    @Getter
-    @Setter
     protected Date birthDate;
-    @Getter
-    @Setter
     protected boolean isValide = false;
-    @Getter
-    @Setter
     protected boolean isActive = false;
-    @Getter
-    @Setter
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     protected Department department;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> roles =new ArrayList<>();
+
+	public Person(int id, String firstName, String lastName, char gendre, String email, String password) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gendre = gendre;
+		this.email = email;
+		this.password = password;
+	}
+    
+    
+    
+    
+    
 
 }

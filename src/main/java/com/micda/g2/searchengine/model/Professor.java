@@ -16,7 +16,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString(callSuper = true, includeFieldNames = true)
-@EqualsAndHashCode
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity

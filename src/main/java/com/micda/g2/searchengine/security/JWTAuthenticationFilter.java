@@ -1,9 +1,11 @@
 package com.micda.g2.searchengine.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.micda.g2.searchengine.model.Person;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.securme.jwt.entities.AppUser;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -31,19 +33,19 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             throws AuthenticationException {
 
 
-        AppUser  user = null;
+    	Person  user = null;
         try {
-            user = new ObjectMapper().readValue(request.getInputStream(),AppUser.class);
+            user = new ObjectMapper().readValue(request.getInputStream(),Person.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println("*********  from JWT Filter **********");
-        System.out.println(user.getUsername());
+        System.out.println(user.getEmail());
 
         System.out.println(user.getPassword());
 
         return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                user.getUsername(),user.getPassword()));
+                user.getEmail(),user.getPassword()));
 
     }
 

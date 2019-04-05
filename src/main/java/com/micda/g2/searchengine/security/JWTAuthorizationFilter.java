@@ -22,7 +22,6 @@ public class JWTAuthorizationFilter  extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
 
-
         response.addHeader("Access-Control-Allow-Origin", "*");
 
         response.addHeader("Access-Control-Allow-Headers", "Origin,Accept,x-requested-with," +
