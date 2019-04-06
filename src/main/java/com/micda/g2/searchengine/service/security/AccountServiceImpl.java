@@ -43,8 +43,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void AddRoleToUser(String roleName, String Email) {
-
+    public void AddRoleToUser(String Email,String roleName) {
 
         roleRepository.findAll().stream().forEach(role -> System.out.println(role.getRolename()));
 
@@ -58,8 +57,7 @@ public class AccountServiceImpl implements AccountService {
         System.out.println(user);
 
 
-
-        user.getRoles().add(role);
+       user.getRoles().add(role);
 
     }
 

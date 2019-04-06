@@ -11,6 +11,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
+import com.micda.g2.searchengine.repository.IPersonRepository;
+import com.micda.g2.searchengine.repository.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -38,7 +40,11 @@ public class SearchengineApplication implements CommandLineRunner {
 
 	    @Autowired
 	    private AccountService accountService;
-	
+
+	    @Autowired
+		private IRoleRepository roleRepository;
+	    @Autowired
+		private IPersonRepository personRepository;
 	
 	
 	public static void main(String[] args) {
@@ -67,6 +73,8 @@ public class SearchengineApplication implements CommandLineRunner {
 
 	        accountService.AddRoleToUser("Hamza@gmail.com","ADMIN");
 	        accountService.AddRoleToUser("Hamza@gmail.com","USER");
+
+
 
 	       
 	    }
