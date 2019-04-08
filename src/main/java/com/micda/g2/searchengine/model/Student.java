@@ -15,8 +15,8 @@ import lombok.ToString;
 @Data
 public class Student extends Person {
 
-    private static final long serialVersionUID = 4584595397027699062L;
-    private String level;
-    private String diploma;
+	private static final long serialVersionUID = 4584595397027699062L;
+	private String level;
+	private String diploma;
 
 }
