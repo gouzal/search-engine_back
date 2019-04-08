@@ -1,5 +1,12 @@
 package com.micda.g2.searchengine.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -17,13 +24,9 @@ import com.micda.g2.searchengine.model.Person;
 import com.micda.g2.searchengine.repository.IPersonRepository;
 import com.micda.g2.searchengine.service.AccountService;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class UserServiceImpl implements UserDetailsService, IPersonRepository {
+    public static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
 
 
     @Autowired
@@ -35,7 +38,7 @@ public class UserServiceImpl implements UserDetailsService, IPersonRepository {
 
         Person  user = accountService.findUserByUsername(Email);
         System.out.println("UserServiceImpl->loadUserByUsername : ");
-
+        
         if(user==null){
             throw new UsernameNotFoundException(Email);
         }
