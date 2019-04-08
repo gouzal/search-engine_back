@@ -1,18 +1,5 @@
 package com.micda.g2.searchengine;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.stream.Stream;
-
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-
-import com.micda.g2.searchengine.repository.IPersonRepository;
-import com.micda.g2.searchengine.repository.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,60 +13,44 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.micda.g2.searchengine.model.Person;
 import com.micda.g2.searchengine.model.Role;
-import com.micda.g2.searchengine.service.security.AccountService;
+import com.micda.g2.searchengine.service.AccountService;
 
 @EnableAutoConfiguration
 @EntityScan("com.micda.g2.searchengine.model")
 @EnableJpaRepositories("com.micda.g2.searchengine.repository")
-/*@ComponentScan("com.micda.g2.searchengine.service.impl")
-@ComponentScan("com.micda.g2.searchengine.rest.impl")*/
-@ComponentScan(basePackages = { "com.micda.g2.searchengine.*"})
-@SpringBootApplication(scanBasePackages = {"com.micda.g2.searchengine.*"})
-  
+/*
+ * @ComponentScan("com.micda.g2.searchengine.service.impl")
+ * 
+ * @ComponentScan("com.micda.g2.searchengine.rest.impl")
+ */
+@ComponentScan(basePackages = { "com.micda.g2.searchengine.*" })
+@SpringBootApplication(scanBasePackages = { "com.micda.g2.searchengine.*" })
+
 public class SearchengineApplication implements CommandLineRunner {
 
-	    @Autowired
-	    private AccountService accountService;
+	@Autowired
+	private AccountService accountService;
 
-	    @Autowired
-		private IRoleRepository roleRepository;
-	    @Autowired
-		private IPersonRepository personRepository;
-	
-	
 	public static void main(String[] args) {
 		SpringApplication.run(SearchengineApplication.class, args);
 	}
 
-	
-	  @Bean
-	    public BCryptPasswordEncoder passwordEncoder() {
-	        return new BCryptPasswordEncoder();
-	    }
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		accountService.saveUser(new Person(1, "Hamza", "Fergaoui", 'M', "Hamza@gmail.com", "123"));
 
-	  
+		accountService.saveUser(new Person(2, "Laarbi", "Laarbi", 'M', "Laarbi@gmail.com", "123"));
+		accountService.saveRole(new Role(null, "ADMIN"));
+		accountService.saveRole(new Role(null, "USER"));
 
-	    @Override
-	    public void run(String... args) throws Exception {
-	    
-	    
-	    	
-	    	accountService.saveUser( new Person(1,"Hamza","Fergaoui",'M',"Hamza@gmail.com","123"));
-	    	
-	    	accountService.saveUser( new Person(2,"Laarbi","Laarbi",'M',"Laarbi@gmail.com","123"));
-	        accountService.saveRole(new Role(null,"ADMIN"));
-	        accountService.saveRole(new Role(null,"USER"));
+		accountService.AddRoleToUser("Hamza@gmail.com", "ADMIN");
+		accountService.AddRoleToUser("Hamza@gmail.com", "USER");
 
-	        accountService.AddRoleToUser("Hamza@gmail.com","ADMIN");
-	        accountService.AddRoleToUser("Hamza@gmail.com","USER");
+	}
 
-
-
-	       
-	    }
-
-	
-	
-	
 }
