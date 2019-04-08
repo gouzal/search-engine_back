@@ -13,42 +13,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
-@EqualsAndHashCode
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Data
 public class Revision extends Auditable<Integer> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Getter
-	@Setter
 	private int id;
-	@Getter
-	@Setter
 	private String file;
-	@Getter
-	@Setter
 	private String supervisorFeedback;
-	@Getter
-	@Setter
 	private Date feedbackTime;
-	@Getter
-	@Setter
 	private String studentAnwser;
-	@Getter
-	@Setter
 	private Date answerTime;
-	@Getter
-	@Setter
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "publication_id")
 	private Publication publication;
