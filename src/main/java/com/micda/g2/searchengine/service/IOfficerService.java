@@ -5,11 +5,11 @@ import java.util.List;
 import com.micda.g2.searchengine.model.Officer;
 
 public interface IOfficerService {
-	public void addOfficer(Officer officer);
+	public Officer addOfficer(Officer officer);
 
-	public void removeOfficer(int id);
+	public Officer removeOfficer(int id);
 
-	public void updateOfficer(Officer officer);
+	public Officer updateOfficer(Officer officer);
 
 	public Officer getOfficer(int id);
 

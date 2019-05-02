@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Data
 public class Department extends Auditable<Integer> implements Serializable {
 
     private static final long serialVersionUID = 8523846849113972991L;
@@ -33,11 +35,9 @@ public class Department extends Auditable<Integer> implements Serializable {
     @Getter
     @Setter
     private int id;
-    @Getter
-    @Setter
+   
     private String name;
-    @Getter
-    @Setter
+   
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "department")
     //@JoinColumn(name = "department_id")
     private List<Person> persons = new ArrayList<>();

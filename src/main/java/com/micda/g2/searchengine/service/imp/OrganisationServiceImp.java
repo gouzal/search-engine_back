@@ -20,8 +20,7 @@ public class OrganisationServiceImp implements IOrganisationService {
 
 	@Override
 	public Organisation addOrganisation(Organisation organisation) {
-		this.iOrganisationRepository.save(organisation);
-		return organisation;
+	return	this.iOrganisationRepository.save(organisation);
 	}
 
 	@Override
@@ -29,14 +28,11 @@ public class OrganisationServiceImp implements IOrganisationService {
 		Organisation organisation = this.getOrganisation(id);
 		this.iOrganisationRepository.delete(organisation);
 		return organisation;
-
 	}
 
 	@Override
 	public Organisation updateOrganisation(Organisation organisation) {
-		this.iOrganisationRepository.save(organisation);
-		return organisation;
-
+		return this.iOrganisationRepository.save(organisation);
 	}
 
 	@Override

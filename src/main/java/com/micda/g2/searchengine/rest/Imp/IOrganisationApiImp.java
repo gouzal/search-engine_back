@@ -66,5 +66,6 @@ class IOrganisationApiImp implements IOrganisationApi{
 	public void delete(@PathVariable("id") int id) {
 		organisationServiceImp.removeOrganisation(id);
 	}
+	
 
 }

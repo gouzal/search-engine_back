@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,20 +20,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Data
 public class Collaboration extends Auditable<Integer>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
+ 
     private int id;
-    @Getter
-    @Setter
+   
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
-    @Getter
-    @Setter
+
     @ManyToOne
     @JoinColumn(name = "publication_id")
     private Publication publication;

@@ -5,11 +5,11 @@ import java.util.List;
 import com.micda.g2.searchengine.model.Keyword;
 
 public interface IKeywordService {
-	public void addKeyword(Keyword keyword);
+	public Keyword addKeyword(Keyword keyword);
 
-	public void removeKeyword(int id);
+	public Keyword removeKeyword(int id);
 
-	public void updateKeyword(Keyword keyword);
+	public Keyword updateKeyword(Keyword keyword);
 
 	public Keyword getKeyword(int id);
 

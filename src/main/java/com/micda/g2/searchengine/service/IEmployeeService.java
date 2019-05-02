@@ -5,11 +5,11 @@ import java.util.List;
 import com.micda.g2.searchengine.model.Employee;
 
 public interface IEmployeeService {
-	public void addEmployee(Employee employee);
+	public Employee addEmployee(Employee employee);
 
-	public void removeEmployee(int id);
+	public Employee removeEmployee(int id);
 
-	public void updateEmployee(Employee employee);
+	public Employee updateEmployee(Employee employee);
 
 	public Employee getEmployee(int id);
 
