@@ -3,25 +3,20 @@ package com.micda.g2.searchengine.model;
 import javax.persistence.Entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString(callSuper = true, includeFieldNames = true)
-@EqualsAndHashCode(callSuper = false)
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Data
 public class Student extends Person {
 
-    private static final long serialVersionUID = 4584595397027699062L;
-    @Getter
-    @Setter
-    private String level;
-    @Getter
-    @Setter
-    private String diploma;
+	private static final long serialVersionUID = 4584595397027699062L;
+	private String level;
+	private String diploma;
 
 }

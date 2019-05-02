@@ -20,31 +20,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
-@EqualsAndHashCode(callSuper = false)
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Data
 public class Department extends Auditable<Integer> implements Serializable {
 
-    private static final long serialVersionUID = 8523846849113972991L;
+	private static final long serialVersionUID = 8523846849113972991L;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Id
-    @Getter
-    @Setter
-    private int id;
-   
-    private String name;
-   
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "department")
-    //@JoinColumn(name = "department_id")
-    private List<Person> persons = new ArrayList<>();
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	private int id;
 
-    @Setter
-    @Getter
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "department", fetch = FetchType.LAZY)
-    private List<OrganisationDepartment> organisationDepartments = new ArrayList<>();
+	private String name;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "department")
+	// @JoinColumn(name = "department_id")
+	private List<Person> persons = new ArrayList<>();
+
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "department", fetch = FetchType.LAZY)
+	private List<OrganisationDepartment> organisationDepartments = new ArrayList<>();
 
 }
