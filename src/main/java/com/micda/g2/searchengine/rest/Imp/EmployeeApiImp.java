@@ -15,47 +15,41 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Preconditions;
 import com.micda.g2.searchengine.exception.ResourceNotFoundException;
-import com.micda.g2.searchengine.model.Organisation;
-import com.micda.g2.searchengine.rest.IOrganisationApi;
-import com.micda.g2.searchengine.service.imp.OrganisationServiceImp;
+import com.micda.g2.searchengine.model.Employee;
+import com.micda.g2.searchengine.rest.IEmployeeApi;
+import com.micda.g2.searchengine.service.imp.EmployeeServiceImp;
 import com.micda.g2.searchengine.util.RestPreconditions;
 
 @RestController
-@RequestMapping("/organisation")
-class IOrganisationApiImp implements IOrganisationApi{
+@RequestMapping("/employee")
+class EmployeeApiImp implements IEmployeeApi{
 
 	@Autowired
-	OrganisationServiceImp organisationServiceImp;
+	EmployeeServiceImp employeeServiceImp;
 
 
 	@GetMapping(value = "/{id}")
-	public Organisation get(@PathVariable("id") int id) {
+	public Employee get(@PathVariable("id") int id) {
 
-		return organisationServiceImp.getOrganisation(id);
+		return employeeServiceImp.getEmployee(id);
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Organisation add(@RequestParam(value = "name") String name, @RequestParam(value = "adress") String adress,
-			@RequestParam(value = "tel") String tel, @RequestParam(value = "website") String website,
-			@RequestParam(value = "email") String email) {
-		Organisation organisation = new Organisation();
-		organisation.setName(name);
-		organisation.setAdress(adress);
-		organisation.setTel(tel);
-		organisation.setWebsite(website);
-		organisation.setEmail(email);
-		organisationServiceImp.addOrganisation(organisation);
-		return organisation;
+	public Employee add(@RequestParam(value = "name") String name) {
+		Employee employee = new Employee();
+		//todo set attribute
+		employeeServiceImp.addEmployee(employee);
+		return employee;
 	}
 
 	@PutMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public void update(@PathVariable("id") int id, @RequestBody Organisation organisation) {
-		Preconditions.checkNotNull(organisation);
+	public void update(@PathVariable("id") int id, @RequestBody Employee employee) {
+		Preconditions.checkNotNull(employee);
 		try {
-			RestPreconditions.checkFound(organisationServiceImp.getOrganisation(id));
-			organisationServiceImp.updateOrganisation(organisation);
+			RestPreconditions.checkFound(employeeServiceImp.getEmployee(id));
+			employeeServiceImp.updateEmployee(employee);
 		} catch (ResourceNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -64,8 +58,10 @@ class IOrganisationApiImp implements IOrganisationApi{
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable("id") int id) {
-		organisationServiceImp.removeOrganisation(id);
+		employeeServiceImp.removeEmployee(id);
 	}
+
+
 	
 
 }
