@@ -1,16 +1,11 @@
 package com.micda.g2.searchengine.rest.Imp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Preconditions;
@@ -27,24 +22,17 @@ class DepartmentApiImp implements IDepartmentApi{
 	@Autowired
 	DepartmentServiceImp departmentServiceImp;
 
-
-	@GetMapping(value = "/{id}")
-	public Department get(@PathVariable("id") int id) {
-
-		return departmentServiceImp.getDepartment(id);
+	@Override
+	public List<Department> all() {
+		return this.departmentServiceImp.getAllDepartments();
 	}
 
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public Department add(@RequestParam(value = "name") String name) {
-		Department department = new Department();
-		//todo set attribute
-		departmentServiceImp.addDepartment(department);
-		return department;
+	@Override
+	public Department one(int id) {
+		return this.departmentServiceImp.getDepartment(id);
 	}
-
-	@PutMapping(value = "/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	
+	@Override
 	public void update(@PathVariable("id") int id, @RequestBody Department department) {
 		Preconditions.checkNotNull(department);
 		try {
@@ -55,13 +43,15 @@ class DepartmentApiImp implements IDepartmentApi{
 		}
 	}
 
-	@DeleteMapping(value = "/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	@Override
 	public void delete(@PathVariable("id") int id) {
 		departmentServiceImp.removeDepartment(id);
 	}
 
 
-	
+	@Override
+	public Department add(Department department) {
+		return this.departmentServiceImp.addDepartment(department);
+	}
 
 }

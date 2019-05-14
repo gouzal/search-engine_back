@@ -21,6 +21,16 @@ class OrganisationApiImp implements IOrganisationApi {
 	OrganisationServiceImp organisationServiceImp;
 
 	@Override
+	public List<Organisation> all() {
+		return this.organisationServiceImp.getAllOrganisations();
+	}
+
+	@Override
+	public Organisation one(int id) {
+		return this.organisationServiceImp.getOrganisation(id);
+	}
+	
+	@Override
 	public void update(@PathVariable("id") int id, @RequestBody Organisation organisation) {
 		Preconditions.checkNotNull(organisation);
 		try {
@@ -36,15 +46,6 @@ class OrganisationApiImp implements IOrganisationApi {
 		organisationServiceImp.removeOrganisation(id);
 	}
 
-	@Override
-	public List<Organisation> all() {
-		return this.organisationServiceImp.getAllOrganisations();
-	}
-
-	@Override
-	public Organisation one(int id) {
-		return this.organisationServiceImp.getOrganisation(id);
-	}
 
 	@Override
 	public Organisation add(Organisation organisation) {
