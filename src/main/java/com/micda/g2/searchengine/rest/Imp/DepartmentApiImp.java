@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Preconditions;
 import com.micda.g2.searchengine.exception.ResourceNotFoundException;
@@ -15,8 +13,6 @@ import com.micda.g2.searchengine.rest.IDepartmentApi;
 import com.micda.g2.searchengine.service.imp.DepartmentServiceImp;
 import com.micda.g2.searchengine.util.RestPreconditions;
 
-@RestController
-@RequestMapping("/department")
 class DepartmentApiImp implements IDepartmentApi{
 
 	@Autowired
