@@ -28,6 +28,7 @@ class CollaborationApiImp implements ICollaborationApi{
 	CollaborationServiceImp collaborationServiceImp;
 
 
+	
 	@GetMapping(value = "/{id}")
 	public Collaboration get(@PathVariable("id") int id) {
 
@@ -38,6 +39,8 @@ class CollaborationApiImp implements ICollaborationApi{
 	@ResponseStatus(HttpStatus.CREATED)
 	public Collaboration add(@RequestParam(value = "name") String name) {
 		Collaboration collaboration = new Collaboration();
+		//collaboration.setPublication(publication);
+		//collaboration.set
 		//todo set attribute
 		collaborationServiceImp.addCollaboration(collaboration);
 		return collaboration;
