@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.micda.g2.searchengine.model.Organisation;
 import com.micda.g2.searchengine.repository.IOrganisationRepository;
 import com.micda.g2.searchengine.service.IOrganisationService;
+
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.OrganisationServiceImp")
 public class OrganisationServiceImp implements IOrganisationService {
@@ -20,7 +21,7 @@ public class OrganisationServiceImp implements IOrganisationService {
 
 	@Override
 	public Organisation addOrganisation(Organisation organisation) {
-	return	this.iOrganisationRepository.save(organisation);
+		return this.iOrganisationRepository.save(organisation);
 	}
 
 	@Override
@@ -37,13 +38,17 @@ public class OrganisationServiceImp implements IOrganisationService {
 
 	@Override
 	public Organisation getOrganisation(int id) {
-		return this.iOrganisationRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Organisation with Id:" + id + " Not Found"));
+		return this.iOrganisationRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Organisation with Id:" + id + " Not Found"));
 	}
 
 	@Override
 	public List<Organisation> getAllOrganisations() {
-		List<Organisation> organisations=new ArrayList<>();
-		iOrganisationRepository.findAll().forEach(e->organisations.add(e));
+		List<Organisation> organisations = new ArrayList<>();
+		iOrganisationRepository.findAll().forEach(e -> {
+			organisations.add(e);
+		});
+
 		return organisations;
 	}
 

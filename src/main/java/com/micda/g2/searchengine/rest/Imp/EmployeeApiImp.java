@@ -15,10 +15,11 @@ import com.micda.g2.searchengine.rest.IEmployeeApi;
 import com.micda.g2.searchengine.service.imp.EmployeeServiceImp;
 import com.micda.g2.searchengine.util.RestPreconditions;
 
-
+@RestController
+@RequestMapping("/employee")
 class EmployeeApiImp implements IEmployeeApi{
 
-	@Autowired
+	@Autowired	
 	EmployeeServiceImp employeeServiceImp;
 
 

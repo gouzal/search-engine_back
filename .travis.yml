@@ -1,0 +1,10 @@
+git:
+  depth: 5
+
+  # safelist
+branches:
+  only:
+  - master
+  - dev
+  
+language: java
