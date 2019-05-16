@@ -3,9 +3,8 @@ HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
-.apt_generated
-.classpath
-.factorypath
+.apt_generted
+.classpathactorypath
 .project
 .settings
 .springBeans
@@ -17,6 +16,8 @@ HELP.md
 *.iml
 *.ipr
 
+### VS Code ###
+/.vscode/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

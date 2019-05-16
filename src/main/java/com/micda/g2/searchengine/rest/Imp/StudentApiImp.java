@@ -1,16 +1,11 @@
 package com.micda.g2.searchengine.rest.Imp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Preconditions;
@@ -28,23 +23,17 @@ class StudentApiImp implements IStudentApi{
 	StudentServiceImp studentServiceImp;
 
 
-	@GetMapping(value = "/{id}")
-	public Student get(@PathVariable("id") int id) {
-
-		return studentServiceImp.getStudent(id);
+	@Override
+	public List<Student> all() {
+		return this.studentServiceImp.getAllStudents();
 	}
 
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public Student add(@RequestParam(value = "name") String name) {
-		Student student = new Student();
-		//todo :
-		studentServiceImp.addStudent(student);
-		return student;
+	@Override
+	public Student one(int id) {
+		return this.studentServiceImp.getStudent(id);
 	}
-
-	@PutMapping(value = "/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	
+	@Override
 	public void update(@PathVariable("id") int id, @RequestBody Student student) {
 		Preconditions.checkNotNull(student);
 		try {
@@ -55,10 +44,15 @@ class StudentApiImp implements IStudentApi{
 		}
 	}
 
-	@DeleteMapping(value = "/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	@Override
 	public void delete(@PathVariable("id") int id) {
 		studentServiceImp.removeStudent(id);
+	}
+
+
+	@Override
+	public Student add(Student student) {
+		return this.studentServiceImp.addStudent(student);
 	}
 
 }

@@ -12,13 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 
 @NoArgsConstructor
@@ -34,8 +31,18 @@ public class Organisation  extends Auditable<Integer>  implements Serializable {
     private String adress;
     private String tel;
     private String website;
+    @Setter
+    @Getter
     private String email;
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "organisation", fetch = FetchType.EAGER)
     private List<OrganisationDepartment> organisationDepartments = new ArrayList<>();
+	public String getAdress() {
+		// TODO Auto-generated method stub
+		return this.adress;
+	}
+	public String getName() {
+		// TODO Auto-generated method stub
+		return this.name;
+	}
 
 }

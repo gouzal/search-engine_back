@@ -1,16 +1,11 @@
 package com.micda.g2.searchengine.rest.Imp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Preconditions;
@@ -24,27 +19,21 @@ import com.micda.g2.searchengine.util.RestPreconditions;
 @RequestMapping("/employee")
 class EmployeeApiImp implements IEmployeeApi{
 
-	@Autowired
+	@Autowired	
 	EmployeeServiceImp employeeServiceImp;
 
 
-	@GetMapping(value = "/{id}")
-	public Employee get(@PathVariable("id") int id) {
-
-		return employeeServiceImp.getEmployee(id);
+	@Override
+	public List<Employee> all() {
+		return this.employeeServiceImp.getAllEmployees();
 	}
 
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public Employee add(@RequestParam(value = "name") String name) {
-		Employee employee = new Employee();
-		//todo set attribute
-		employeeServiceImp.addEmployee(employee);
-		return employee;
+	@Override
+	public Employee one(int id) {
+		return this.employeeServiceImp.getEmployee(id);
 	}
-
-	@PutMapping(value = "/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	
+	@Override
 	public void update(@PathVariable("id") int id, @RequestBody Employee employee) {
 		Preconditions.checkNotNull(employee);
 		try {
@@ -55,13 +44,14 @@ class EmployeeApiImp implements IEmployeeApi{
 		}
 	}
 
-	@DeleteMapping(value = "/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	@Override
 	public void delete(@PathVariable("id") int id) {
 		employeeServiceImp.removeEmployee(id);
 	}
 
 
-	
-
+	@Override
+	public Employee add(Employee employee) {
+		return this.employeeServiceImp.addEmployee(employee);
+	}
 }

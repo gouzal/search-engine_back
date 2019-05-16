@@ -1,16 +1,11 @@
 package com.micda.g2.searchengine.rest.Imp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Preconditions;
@@ -28,23 +23,17 @@ class RevisionApiImp implements IRevisionApi{
 	RevisionServiceImp revisionServiceImp;
 
 
-	@GetMapping(value = "/{id}")
-	public Revision get(@PathVariable("id") int id) {
-
-		return revisionServiceImp.getRevision(id);
+	@Override
+	public List<Revision> all() {
+		return this.revisionServiceImp.getAllRevisions();
 	}
 
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public Revision add(@RequestParam(value = "name") String name) {
-		Revision revision = new Revision();
-		//todo :
-		revisionServiceImp.addRevision(revision);
-		return revision;
+	@Override
+	public Revision one(int id) {
+		return this.revisionServiceImp.getRevision(id);
 	}
-
-	@PutMapping(value = "/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	
+	@Override
 	public void update(@PathVariable("id") int id, @RequestBody Revision revision) {
 		Preconditions.checkNotNull(revision);
 		try {
@@ -55,13 +44,15 @@ class RevisionApiImp implements IRevisionApi{
 		}
 	}
 
-	@DeleteMapping(value = "/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	@Override
 	public void delete(@PathVariable("id") int id) {
 		revisionServiceImp.removeRevision(id);
 	}
 
 
-	
+	@Override
+	public Revision add(Revision revision) {
+		return this.revisionServiceImp.addRevision(revision);
+	}
 
 }
