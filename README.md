@@ -1,5 +1,5 @@
 # search-engine
-a search engine and collaboration plateform for students , professors and reseachers
+a search engine and collaboration plateform for students , professors and researchers
 
 #Contribution Guide
 use logger instead of system.out.println
