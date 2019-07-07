@@ -3,6 +3,7 @@ package com.micda.g2.searchengine.rest.Imp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,6 @@ import com.micda.g2.searchengine.service.imp.OrganisationServiceImp;
 import com.micda.g2.searchengine.util.RestPreconditions;
 
 @RestController
-@RequestMapping("/organisation")
 class OrganisationApiImp implements IOrganisationApi {
 
 	@Autowired
@@ -26,13 +26,15 @@ class OrganisationApiImp implements IOrganisationApi {
 
 	@Override
 	@ResponseBody
+	@GetMapping("/organisation")
 	public List<Organisation> all() {
 		return this.organisationServiceImp.getAllOrganisations();
 	}
 
 	@Override
 	@ResponseBody
-	public Organisation one(int id) {
+	@GetMapping("dssfcd")
+	public Organisation one(@PathVariable int id) {
 		System.out.println(this.organisationServiceImp.getOrganisation(id));
 		return this.organisationServiceImp.getOrganisation(id);
 	}

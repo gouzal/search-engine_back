@@ -1,9 +1,11 @@
 package com.micda.g2.searchengine.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -17,13 +19,19 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Data
-public class OrganisationDepartment  extends Auditable<Integer> {
+public class OrganisationDepartment extends Auditable<Integer> {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Id
-    private int id;
-    @ManyToOne(targetEntity = Organisation.class)
-    private Organisation organisation;
-    @ManyToOne(targetEntity = Department.class)
-    private Department department;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	private int id;
+
+//	@ManyToOne
+//	@JoinColumn(name = "organisation_id")
+	private Organisation organisation;
+
+	
+//	@ManyToOne
+//	@JoinColumn(name = "department_id")
+	private Department department;
+	
 }

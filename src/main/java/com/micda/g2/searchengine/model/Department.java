@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -33,11 +34,15 @@ public class Department extends Auditable<Integer> implements Serializable {
 
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "department")
-	// @JoinColumn(name = "department_id")
-	private List<Person> persons = new ArrayList<>();
-
-	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "department", fetch = FetchType.LAZY)
-	private List<OrganisationDepartment> organisationDepartments = new ArrayList<>();
+//	@OneToMany
+//	@JoinColumn(name = "department_id")
+//	 @OneToMany(mappedBy = "department")
+//	private List<Person> persons ;
+	 
+//	@OneToMany
+//	@JoinColumn(name = "department_id")
+	 @OneToMany(mappedBy = "department")
+	private List<OrganisationDepartment> organisationDepartments ;
+	 
 
 }

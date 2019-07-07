@@ -44,12 +44,7 @@ public class OrganisationServiceImp implements IOrganisationService {
 
 	@Override
 	public List<Organisation> getAllOrganisations() {
-		List<Organisation> organisations = new ArrayList<>();
-		iOrganisationRepository.findAll().forEach(e -> {
-			organisations.add(e);
-		});
-
-		return organisations;
+		return iOrganisationRepository.findAll();
 	}
 
 }

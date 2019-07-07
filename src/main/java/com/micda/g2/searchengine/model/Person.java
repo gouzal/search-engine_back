@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -37,7 +38,9 @@ public abstract class Person extends Auditable<Integer>implements Serializable {
     protected Date birthDate;
     protected boolean isValide = false;
     protected boolean isActive = false;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    protected Department department;
+//    @ManyToOne
+//	@JoinColumn(name = "department_id")
+//    protected Department department;
+    
 
 }
