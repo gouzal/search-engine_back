@@ -21,7 +21,7 @@ public class OrganisationDepartmentServiceImp implements IOrganisationDepartment
 
 	@Override
 	public OrganisationDepartment addOrganisationDepartment(OrganisationDepartment organisationDepartment) {
-	return	this.iOrganisationDepartmentRepository.save(organisationDepartment);
+		return this.iOrganisationDepartmentRepository.save(organisationDepartment);
 	}
 
 	@Override
@@ -38,11 +38,10 @@ public class OrganisationDepartmentServiceImp implements IOrganisationDepartment
 
 	@Override
 	public OrganisationDepartment getOrganisationDepartment(int id) {
-		boolean existe = this.iOrganisationDepartmentRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getOrganisationDepartment(id);
-		}
-		throw new EntityNotFoundException("OrganisationDepartment with Id:" + id + " Not Found");
+		return this.iOrganisationDepartmentRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("OrganisationDepartment with Id:" + id + " Not Found"));
+
+
 	}
 
 	@Override

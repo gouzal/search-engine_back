@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.micda.g2.searchengine.model.Revision;
 
 @RestController
-@RequestMapping("/revision")
 public interface IRevisionApi extends IEntityApi<Revision> {
 
 }

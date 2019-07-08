@@ -15,13 +15,13 @@ import com.micda.g2.searchengine.service.IRevisionService;
 
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.RevisionServiceImp")
-public class RevisionServiceImp implements IRevisionService{
+public class RevisionServiceImp implements IRevisionService {
 	@Autowired
 	private IRevisionRepository iRevisionRepository;
 
 	@Override
 	public Revision addRevision(Revision revision) {
-	return	this.iRevisionRepository.save(revision);
+		return this.iRevisionRepository.save(revision);
 	}
 
 	@Override
@@ -38,19 +38,16 @@ public class RevisionServiceImp implements IRevisionService{
 
 	@Override
 	public Revision getRevision(int id) {
-		boolean existe = this.iRevisionRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getRevision(id);
-		}
-		throw new EntityNotFoundException("Revision with Id:" + id + " Not Found");
+		return this.iRevisionRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Revision with Id:" + id + " Not Found"));
+
 	}
 
 	@Override
 	public List<Revision> getAllRevisions() {
-		List<Revision> revisions=new ArrayList<>();
-		iRevisionRepository.findAll().forEach(e->revisions.add(e));
+		List<Revision> revisions = new ArrayList<>();
+		iRevisionRepository.findAll().forEach(e -> revisions.add(e));
 		return revisions;
 	}
 
-	
 }

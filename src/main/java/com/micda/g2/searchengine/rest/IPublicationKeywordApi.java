@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.micda.g2.searchengine.model.PublicationKeyword;
 
 @RestController
-@RequestMapping("/PublicationKeyword")
 public interface IPublicationKeywordApi extends IEntityApi<PublicationKeyword> {
 
 }

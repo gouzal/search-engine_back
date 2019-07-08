@@ -15,13 +15,13 @@ import com.micda.g2.searchengine.service.IStudentService;
 
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.StudentServiceImp")
-public class StudentServiceImp implements IStudentService{
+public class StudentServiceImp implements IStudentService {
 	@Autowired
 	private IStudentRepository iStudentRepository;
 
 	@Override
 	public Student addStudent(Student student) {
-	return	this.iStudentRepository.save(student);
+		return this.iStudentRepository.save(student);
 	}
 
 	@Override
@@ -38,19 +38,16 @@ public class StudentServiceImp implements IStudentService{
 
 	@Override
 	public Student getStudent(int id) {
-		boolean existe = this.iStudentRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getStudent(id);
-		}
-		throw new EntityNotFoundException("Student with Id:" + id + " Not Found");
+		return this.iStudentRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Student with Id:" + id + " Not Found"));
+
 	}
 
 	@Override
 	public List<Student> getAllStudents() {
-		List<Student> students=new ArrayList<>();
-		iStudentRepository.findAll().forEach(e->students.add(e));
+		List<Student> students = new ArrayList<>();
+		iStudentRepository.findAll().forEach(e -> students.add(e));
 		return students;
 	}
 
-	
 }

@@ -38,11 +38,8 @@ public class KeywordServiceImp implements IKeywordService{
 
 	@Override
 	public Keyword getKeyword(int id) {
-		boolean existe = this.iKeywordRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getKeyword(id);
-		}
-		throw new EntityNotFoundException("Keyword with Id:" + id + " Not Found");
+		return this.iKeywordRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Keyword with Id:" + id + " Not Found"));
 	}
 
 	@Override
@@ -52,5 +49,4 @@ public class KeywordServiceImp implements IKeywordService{
 		return keywords;
 	}
 
-	
 }

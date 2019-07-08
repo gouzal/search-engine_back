@@ -3,8 +3,10 @@ package com.micda.g2.searchengine.rest.Imp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,14 +35,13 @@ class OrganisationApiImp implements IOrganisationApi {
 
 	@Override
 	@ResponseBody
-	@GetMapping("dssfcd")
+	@GetMapping("/organisation/{id}")
 	public Organisation one(@PathVariable int id) {
-		System.out.println(this.organisationServiceImp.getOrganisation(id));
 		return this.organisationServiceImp.getOrganisation(id);
 	}
 
 	@Override
-	@PutMapping("/")
+	@PutMapping("/organisation/{id}")
 	public void update(@PathVariable("id") int id, @RequestBody Organisation organisation) {
 		Preconditions.checkNotNull(organisation);
 		try {
@@ -52,14 +53,17 @@ class OrganisationApiImp implements IOrganisationApi {
 	}
 
 	@Override
+	@ResponseBody
+	@DeleteMapping("/organisation/{id}")
 	public void delete(@PathVariable("id") int id) {
 		organisationServiceImp.removeOrganisation(id);
 	}
 
 	@Override
-	public Organisation add(Organisation organisation) {
+	@ResponseBody
+	@PostMapping("/organisation")
+	public Organisation add(@RequestBody Organisation organisation) {
 		return this.organisationServiceImp.addOrganisation(organisation);
 	}
-
 
 }

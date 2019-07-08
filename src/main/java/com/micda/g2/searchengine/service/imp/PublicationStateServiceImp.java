@@ -15,13 +15,13 @@ import com.micda.g2.searchengine.service.IPublicationStateService;
 
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.PublicationStateServiceImp")
-public class PublicationStateServiceImp implements IPublicationStateService{
+public class PublicationStateServiceImp implements IPublicationStateService {
 	@Autowired
 	private IPublicationStateRepository iPublicationStateRepository;
 
 	@Override
 	public PublicationState addPublicationState(PublicationState publicationState) {
-	return	this.iPublicationStateRepository.save(publicationState);
+		return this.iPublicationStateRepository.save(publicationState);
 	}
 
 	@Override
@@ -38,19 +38,16 @@ public class PublicationStateServiceImp implements IPublicationStateService{
 
 	@Override
 	public PublicationState getPublicationState(int id) {
-		boolean existe = this.iPublicationStateRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getPublicationState(id);
-		}
-		throw new EntityNotFoundException("PublicationState with Id:" + id + " Not Found");
+		return this.iPublicationStateRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("PublicationState with Id:" + id + " Not Found"));
+
 	}
 
 	@Override
 	public List<PublicationState> getAllPublicationStates() {
-		List<PublicationState> publicationStates=new ArrayList<>();
-		iPublicationStateRepository.findAll().forEach(e->publicationStates.add(e));
+		List<PublicationState> publicationStates = new ArrayList<>();
+		iPublicationStateRepository.findAll().forEach(e -> publicationStates.add(e));
 		return publicationStates;
 	}
 
-	
 }

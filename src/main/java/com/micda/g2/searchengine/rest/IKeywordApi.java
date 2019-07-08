@@ -7,7 +7,6 @@ import com.micda.g2.searchengine.model.Keyword;
 
 
 @RestController
-@RequestMapping("/keyword")
 public interface IKeywordApi extends IEntityApi<Keyword> {
 
 }

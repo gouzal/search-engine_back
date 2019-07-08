@@ -12,17 +12,16 @@ import org.springframework.stereotype.Service;
 import com.micda.g2.searchengine.model.PublicationKeyword;
 import com.micda.g2.searchengine.repository.IPublicationKeywordRepository;
 import com.micda.g2.searchengine.service.IPublicationKeywordService;
-	
 
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.PublicationKeywordServiceImp")
-public class PublicationKeywordServiceImp implements IPublicationKeywordService{
+public class PublicationKeywordServiceImp implements IPublicationKeywordService {
 	@Autowired
 	private IPublicationKeywordRepository iPublicationKeywordRepository;
 
 	@Override
 	public PublicationKeyword addPublicationKeyword(PublicationKeyword publicationKeyword) {
-	return	this.iPublicationKeywordRepository.save(publicationKeyword);
+		return this.iPublicationKeywordRepository.save(publicationKeyword);
 	}
 
 	@Override
@@ -39,19 +38,15 @@ public class PublicationKeywordServiceImp implements IPublicationKeywordService{
 
 	@Override
 	public PublicationKeyword getPublicationKeyword(int id) {
-		boolean existe = this.iPublicationKeywordRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getPublicationKeyword(id);
-		}
-		throw new EntityNotFoundException("PublicationKeyword with Id:" + id + " Not Found");
+		return this.iPublicationKeywordRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("PublicationKeyword with Id:" + id + " Not Found"));
 	}
 
 	@Override
 	public List<PublicationKeyword> getAllPublicationKeywords() {
-		List<PublicationKeyword> publicationKeywords=new ArrayList<>();
-		iPublicationKeywordRepository.findAll().forEach(e->publicationKeywords.add(e));
+		List<PublicationKeyword> publicationKeywords = new ArrayList<>();
+		iPublicationKeywordRepository.findAll().forEach(e -> publicationKeywords.add(e));
 		return publicationKeywords;
 	}
 
-	
 }

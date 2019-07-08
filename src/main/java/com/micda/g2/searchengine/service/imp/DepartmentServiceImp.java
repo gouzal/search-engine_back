@@ -39,11 +39,9 @@ public class DepartmentServiceImp implements IDepartmentService {
 
 	@Override
 	public Department getDepartment(int id) {
-		boolean existe = this.iDepartmentRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getDepartment(id);
-		}
-		throw new EntityNotFoundException("Department with Id:" + id + " Not Found");
+		return this.iDepartmentRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Department with Id:" + id + " Not Found"));
+
 	}
 
 	@Override

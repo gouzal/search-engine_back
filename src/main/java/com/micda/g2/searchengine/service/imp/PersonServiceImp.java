@@ -38,11 +38,9 @@ public class PersonServiceImp implements IPersonService{
 
 	@Override
 	public Person getPerson(int id) {
-		boolean existe = this.iPersonRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getPerson(id);
-		}
-		throw new EntityNotFoundException("Person with Id:" + id + " Not Found");
+		return this.iPersonRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Person with Id:" + id + " Not Found"));
+
 	}
 
 	@Override

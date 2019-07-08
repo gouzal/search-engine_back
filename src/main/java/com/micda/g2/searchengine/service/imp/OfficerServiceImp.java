@@ -38,11 +38,10 @@ public class OfficerServiceImp implements IOfficerService{
 
 	@Override
 	public Officer getOfficer(int id) {
-		boolean existe = this.iOfficerRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getOfficer(id);
-		}
-		throw new EntityNotFoundException("Officer with Id:" + id + " Not Found");
+		return this.iOfficerRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Officer with Id:" + id + " Not Found"));
+
+
 	}
 
 	@Override

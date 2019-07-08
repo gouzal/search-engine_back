@@ -38,11 +38,8 @@ public class EmployeeServiceImp implements IEmployeeService {
 
 	@Override
 	public Employee getEmployee(int id) {
-		boolean existe = this.iEmployeeRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getEmployee(id);
-		}
-		throw new EntityNotFoundException("Employee with Id:" + id + " Not Found");
+		return this.iEmployeeRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Employee with Id:" + id + " Not Found"));
 	}
 
 	@Override

@@ -3,9 +3,14 @@ package com.micda.g2.searchengine.rest.Imp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Preconditions;
@@ -16,23 +21,28 @@ import com.micda.g2.searchengine.service.imp.CollaborationServiceImp;
 import com.micda.g2.searchengine.util.RestPreconditions;
 
 @RestController
-@RequestMapping("/collaboration")
 class CollaborationApiImp implements ICollaborationApi{
 
 	@Autowired
 	CollaborationServiceImp collaborationServiceImp;
 
 	@Override
+	@ResponseBody
+	@GetMapping("/collaboration")
 	public List<Collaboration> all() {
 		return this.collaborationServiceImp.getAllCollaborations();
 	}
 
 	@Override
-	public Collaboration one(int id) {
+	@ResponseBody
+	@GetMapping("/collaboration/{id}")
+	public Collaboration one(@PathVariable int id) {
 		return this.collaborationServiceImp.getCollaboration(id);
 	}
 	
 	@Override
+	@ResponseBody
+	@PutMapping("/collaboration/{id}")
 	public void update(@PathVariable("id") int id, @RequestBody Collaboration collaboration) {
 		Preconditions.checkNotNull(collaboration);
 		try {
@@ -44,13 +54,17 @@ class CollaborationApiImp implements ICollaborationApi{
 	}
 
 	@Override
+	@ResponseBody
+	@DeleteMapping("/collaboration/{id}")
 	public void delete(@PathVariable("id") int id) {
 		collaborationServiceImp.removeCollaboration(id);
 	}
 
 
 	@Override
-	public Collaboration add(Collaboration collaboration) {
+	@ResponseBody
+	@PostMapping("/collaboration")
+	public Collaboration add(@RequestBody Collaboration collaboration) {
 		return this.collaborationServiceImp.addCollaboration(collaboration);
 	}
 

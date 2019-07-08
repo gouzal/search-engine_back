@@ -38,11 +38,10 @@ public class CollaborationServiceImp implements ICollaborationService {
 
 	@Override
 	public Collaboration getCollaboration(int id) {
-		boolean existe = this.iCollaborationRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getCollaboration(id);
-		}
-		throw new EntityNotFoundException("Collaboration with Id:" + id + " Not Found");
+		return this.iCollaborationRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Collaboration with Id:" + id + " Not Found"));
+
+
 	}
 
 	@Override

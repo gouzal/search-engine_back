@@ -40,11 +40,9 @@ public class PublicationServiceImp implements IPublicationService{
 
 	@Override
 	public Publication getPublication(int id) {
-		boolean existe = this.iPublicationRepository.findById(id).isPresent();
-		if (existe) {
-			return this.getPublication(id);
-		}
-		throw new EntityNotFoundException("Publication with Id:" + id + " Not Found");
+		return this.iPublicationRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Publication with Id:" + id + " Not Found"));
+
 	}
 
 	@Override

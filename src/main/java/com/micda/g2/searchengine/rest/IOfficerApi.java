@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.micda.g2.searchengine.model.Officer;
 
 @RestController
-@RequestMapping("/officer")
 public interface IOfficerApi extends IEntityApi<Officer> {
 
 }
