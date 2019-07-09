@@ -39,6 +39,18 @@ class PublicationApiImp implements IPublicationApi{
 		return this.publicationServiceImp.getPublication(id);
 	}
 	
+	@ResponseBody
+	@GetMapping("/publication/{id}/student")
+	public List<Publication> allByStudent(Integer id) {
+		return this.publicationServiceImp.getAllByStudentId(id);
+	}
+	
+	@ResponseBody
+	@GetMapping("/publication/{id}/supervisor")
+	public List<Publication> allBySupervisor(Integer id) {
+		return this.publicationServiceImp.getAllBySupervisorId(id);
+	}	
+	
 	@Override
 	@PutMapping("/publication/{id}")
 	public void update(@PathVariable("id") int id, @RequestBody Publication publication) {

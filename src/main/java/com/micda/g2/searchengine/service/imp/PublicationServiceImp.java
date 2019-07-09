@@ -14,7 +14,6 @@ import com.micda.g2.searchengine.repository.IPublicationRepository;
 import com.micda.g2.searchengine.service.IPublicationService;
 
 
-
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.PublicationServiceImp")
 public class PublicationServiceImp implements IPublicationService{
@@ -44,7 +43,19 @@ public class PublicationServiceImp implements IPublicationService{
 				.orElseThrow(() -> new EntityNotFoundException("Publication with Id:" + id + " Not Found"));
 
 	}
-
+	
+	public List<Publication> getAllByStudentId(Integer id) {
+		List<Publication> publications=new ArrayList<>();
+		iPublicationRepository.findAllByStudentId(String.valueOf(id)).forEach(e->publications.add(e));
+		return publications;
+	}
+	
+	public List<Publication> getAllBySupervisorId(Integer id) {
+		List<Publication> publications=new ArrayList<>();
+		iPublicationRepository.findAllBySupervisorId(String.valueOf(id)).forEach(e->publications.add(e));
+		return publications;
+	}
+	
 	@Override
 	public List<Publication> getAllPublications() {
 		List<Publication> publications=new ArrayList<>();
