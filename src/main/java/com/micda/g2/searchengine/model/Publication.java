@@ -18,14 +18,16 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @NoArgsConstructor
 @Entity
 @Data
-public class Publication extends Auditable<Integer>{
+public class Publication extends Auditable<Integer> {
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private int id;
+	
     private String title;
     
     @Column(name = "abstract")
@@ -43,9 +45,12 @@ public class Publication extends Auditable<Integer>{
     @JoinColumn(name = "supervisor_id")
     private Person supervisor;
     
-    @ManyToOne(targetEntity = Person.class)
+    @ManyToOne(targetEntity = Student.class)
     @JoinColumn(name = "student_id")
-    private Person mainAuthor;
+    private Student mainAuthor;
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "publication")
+    private List<Revision> revisions = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -119,14 +124,12 @@ public class Publication extends Auditable<Integer>{
 		this.supervisor = supervisor;
 	}
 
-	public Person getMainAuthor() {
+	public Student getMainAuthor() {
 		return mainAuthor;
 	}
 
-	public void setMainAuthor(Person mainAuthor) {
+	public void setMainAuthor(Student mainAuthor) {
 		this.mainAuthor = mainAuthor;
 	}
-
-
 
 }

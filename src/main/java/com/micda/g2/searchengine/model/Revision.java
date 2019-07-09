@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,15 +23,17 @@ public class Revision extends Auditable<Integer> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
 	private String file;
 	private String supervisorFeedback;
 	private Date feedbackTime;
 	private String studentAnwser;
 	private Date answerTime;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "publication_id")
 	
+	@ManyToOne
+	@JoinColumn(name = "publication_id")
 	private Publication publication;
+	
 	public int getId() {
 		return id;
 	}
