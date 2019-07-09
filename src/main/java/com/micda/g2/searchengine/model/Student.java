@@ -10,8 +10,20 @@ import lombok.NoArgsConstructor;
 @Data
 public class Student extends Person {
 
-	private static final long serialVersionUID = 4584595397027699062L;
 	private String level;
 	private String diploma;
+	
+	public String getLevel() {
+		return level;
+	}
+	public void setLevel(String level) {
+		this.level = level;
+	}
+	public String getDiploma() {
+		return diploma;
+	}
+	public void setDiploma(String diploma) {
+		this.diploma = diploma;
+	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.micda.g2.searchengine.model.Department;
 
 public interface IDepartmentService {
+	
 	public Department addDepartment(Department department);
 
 	public Department removeDepartment(int id);
@@ -14,4 +15,5 @@ public interface IDepartmentService {
 	public Department getDepartment(int id);
 
 	public List<Department> getAllDepartments();
+	
 }

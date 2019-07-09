@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -12,20 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @NoArgsConstructor
 @Entity
 @Data
-public class Revision extends Auditable<Integer> implements Serializable {
+public class Revision extends Auditable<Integer> {
 
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -36,5 +29,49 @@ public class Revision extends Auditable<Integer> implements Serializable {
 	private Date answerTime;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "publication_id")
+	
 	private Publication publication;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+	public String getSupervisorFeedback() {
+		return supervisorFeedback;
+	}
+	public void setSupervisorFeedback(String supervisorFeedback) {
+		this.supervisorFeedback = supervisorFeedback;
+	}
+	public Date getFeedbackTime() {
+		return feedbackTime;
+	}
+	public void setFeedbackTime(Date feedbackTime) {
+		this.feedbackTime = feedbackTime;
+	}
+	public String getStudentAnwser() {
+		return studentAnwser;
+	}
+	public void setStudentAnwser(String studentAnwser) {
+		this.studentAnwser = studentAnwser;
+	}
+	public Date getAnswerTime() {
+		return answerTime;
+	}
+	public void setAnswerTime(Date answerTime) {
+		this.answerTime = answerTime;
+	}
+	public Publication getPublication() {
+		return publication;
+	}
+	public void setPublication(Publication publication) {
+		this.publication = publication;
+	}
+	
 }

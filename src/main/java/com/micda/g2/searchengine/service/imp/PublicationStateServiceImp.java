@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -45,9 +44,7 @@ public class PublicationStateServiceImp implements IPublicationStateService {
 
 	@Override
 	public List<PublicationState> getAllPublicationStates() {
-		List<PublicationState> publicationStates = new ArrayList<>();
-		iPublicationStateRepository.findAll().forEach(e -> publicationStates.add(e));
-		return publicationStates;
+		return iPublicationStateRepository.findAll();
 	}
 
 }

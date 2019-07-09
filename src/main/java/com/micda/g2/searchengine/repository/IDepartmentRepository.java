@@ -6,4 +6,6 @@ import com.micda.g2.searchengine.model.Department;
 
 public interface IDepartmentRepository extends JpaRepository<Department, Integer> {
 
+	
+	
 }

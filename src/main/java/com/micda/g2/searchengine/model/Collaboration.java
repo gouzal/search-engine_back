@@ -21,9 +21,34 @@ public class Collaboration extends Auditable<Integer> {
 
 	@ManyToOne
 	@JoinColumn(name = "student_id")
-	private Student student;
+	private Person person;
 
 	@ManyToOne
 	@JoinColumn(name = "publication_id")
 	private Publication publication;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public Publication getPublication() {
+		return publication;
+	}
+
+	public void setPublication(Publication publication) {
+		this.publication = publication;
+	}
+	
 }
