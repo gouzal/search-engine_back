@@ -44,15 +44,15 @@ public class PublicationServiceImp implements IPublicationService{
 
 	}
 	
-	public List<Publication> getAllByStudentId(Integer id) {
+	public List<Publication> getAllByStudentId(int id) {
 		List<Publication> publications=new ArrayList<>();
-		iPublicationRepository.findAllByStudentId(String.valueOf(id)).forEach(e->publications.add(e));
+		iPublicationRepository.findAllByStudentId(id).forEach(e->publications.add(e));
 		return publications;
 	}
 	
-	public List<Publication> getAllBySupervisorId(Integer id) {
+	public List<Publication> getAllBySupervisorId(int id) {
 		List<Publication> publications=new ArrayList<>();
-		iPublicationRepository.findAllBySupervisorId(String.valueOf(id)).forEach(e->publications.add(e));
+		iPublicationRepository.findAllBySupervisorId(id).forEach(e->publications.add(e));
 		return publications;
 	}
 	
