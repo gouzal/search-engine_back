@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -15,13 +14,13 @@ import com.micda.g2.searchengine.service.IKeywordService;
 
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.KeywordServiceImp")
-public class KeywordServiceImp implements IKeywordService{
+public class KeywordServiceImp implements IKeywordService {
 	@Autowired
 	private IKeywordRepository iKeywordRepository;
 
 	@Override
 	public Keyword addKeyword(Keyword keyword) {
-	return	this.iKeywordRepository.save(keyword);
+		return this.iKeywordRepository.save(keyword);
 	}
 
 	@Override
@@ -44,9 +43,7 @@ public class KeywordServiceImp implements IKeywordService{
 
 	@Override
 	public List<Keyword> getAllKeywords() {
-		List<Keyword> keywords=new ArrayList<>();
-		iKeywordRepository.findAll().forEach(e->keywords.add(e));
-		return keywords;
+		return iKeywordRepository.findAll();
 	}
 
 }

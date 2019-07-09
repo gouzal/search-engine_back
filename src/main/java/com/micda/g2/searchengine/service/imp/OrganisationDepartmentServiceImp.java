@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -15,7 +14,7 @@ import com.micda.g2.searchengine.service.IOrganisationDepartmentService;
 
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.OrganisationDepartmentServiceImp")
-public class OrganisationDepartmentServiceImp implements IOrganisationDepartmentService{
+public class OrganisationDepartmentServiceImp implements IOrganisationDepartmentService {
 	@Autowired
 	private IOrganisationDepartmentRepository iOrganisationDepartmentRepository;
 
@@ -41,15 +40,11 @@ public class OrganisationDepartmentServiceImp implements IOrganisationDepartment
 		return this.iOrganisationDepartmentRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("OrganisationDepartment with Id:" + id + " Not Found"));
 
-
 	}
 
 	@Override
 	public List<OrganisationDepartment> getAllOrganisationDepartments() {
-		List<OrganisationDepartment> organisationDepartments=new ArrayList<>();
-		iOrganisationDepartmentRepository.findAll().forEach(e->organisationDepartments.add(e));
-		return organisationDepartments;
+		return iOrganisationDepartmentRepository.findAll();
 	}
 
-	
 }

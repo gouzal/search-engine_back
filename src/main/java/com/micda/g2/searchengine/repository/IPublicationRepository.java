@@ -11,9 +11,9 @@ import com.micda.g2.searchengine.model.Publication;
 public interface IPublicationRepository extends JpaRepository<Publication, Integer> {
 	
 	@Query("SELECT p FROM Publication p WHERE p.mainAuthor.id = :studentId")
-	public List<Publication> findAllByStudentId(@Param("studentId") String studentId);
+	public List<Publication> findAllByStudentId(@Param("studentId") int studentId);
 
 	@Query("SELECT p FROM Publication p WHERE p.supervisor.id = :personId")
-	public List<Publication> findAllBySupervisorId(@Param("personId") String personId);	
+	public List<Publication> findAllBySupervisorId(@Param("personId") int personId);	
 	
 }

@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -15,13 +14,13 @@ import com.micda.g2.searchengine.service.IOfficerService;
 
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.OfficerServiceImp")
-public class OfficerServiceImp implements IOfficerService{
+public class OfficerServiceImp implements IOfficerService {
 	@Autowired
 	private IOfficerRepository iOfficerRepository;
 
 	@Override
 	public Officer addOfficer(Officer officer) {
-	return	this.iOfficerRepository.save(officer);
+		return this.iOfficerRepository.save(officer);
 	}
 
 	@Override
@@ -41,15 +40,11 @@ public class OfficerServiceImp implements IOfficerService{
 		return this.iOfficerRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Officer with Id:" + id + " Not Found"));
 
-
 	}
 
 	@Override
 	public List<Officer> getAllOfficers() {
-		List<Officer> officers=new ArrayList<>();
-		iOfficerRepository.findAll().forEach(e->officers.add(e));
-		return officers;
+		return iOfficerRepository.findAll();
 	}
 
-	
 }

@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -22,7 +21,7 @@ public class DepartmentServiceImp implements IDepartmentService {
 
 	@Override
 	public Department addDepartment(Department department) {
-	return	this.iDepartmentRepository.save(department);
+		return this.iDepartmentRepository.save(department);
 	}
 
 	@Override
@@ -46,10 +45,7 @@ public class DepartmentServiceImp implements IDepartmentService {
 
 	@Override
 	public List<Department> getAllDepartments() {
-		List<Department> departments=new ArrayList<>();
-		iDepartmentRepository.findAll().forEach(e->departments.add(e));
-		return departments;
+		return iDepartmentRepository.findAll();
 	}
 
-	
 }

@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -41,14 +40,11 @@ public class ProfessorServiceImp implements IProfessorService {
 		return this.iProfessorRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Professor with Id:" + id + " Not Found"));
 
-
 	}
 
 	@Override
 	public List<Professor> getAllProfessors() {
-		List<Professor> professors = new ArrayList<>();
-		iProfessorRepository.findAll().forEach(e -> professors.add(e));
-		return professors;
+		return iProfessorRepository.findAll();
 	}
 
 }

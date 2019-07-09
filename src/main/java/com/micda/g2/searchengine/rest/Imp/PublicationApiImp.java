@@ -41,14 +41,14 @@ class PublicationApiImp implements IPublicationApi{
 	
 	@ResponseBody
 	@GetMapping("/publication/{id}/student")
-	public List<Publication> allByStudent(Integer id) {
+	public List<Publication> allByStudent(@PathVariable("id") int id) {
 		return this.publicationServiceImp.getAllByStudentId(id);
 	}
 	
 	@ResponseBody
 	@GetMapping("/publication/{id}/supervisor")
-	public List<Publication> allBySupervisor(Integer id) {
-		return this.publicationServiceImp.getAllBySupervisorId(id);
+	public List<Publication> allBySupervisor(@PathVariable("id") int id) {
+		return publicationServiceImp.getAllBySupervisorId(id);
 	}	
 	
 	@Override

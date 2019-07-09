@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -15,13 +14,13 @@ import com.micda.g2.searchengine.service.IPersonService;
 
 @Service
 @Qualifier("com.micda.g2.searchengine.service.imp.PersonServiceImp")
-public class PersonServiceImp implements IPersonService{
+public class PersonServiceImp implements IPersonService {
 	@Autowired
 	private IPersonRepository iPersonRepository;
 
 	@Override
 	public Person addPerson(Person person) {
-	return	this.iPersonRepository.save(person);
+		return this.iPersonRepository.save(person);
 	}
 
 	@Override
@@ -45,10 +44,7 @@ public class PersonServiceImp implements IPersonService{
 
 	@Override
 	public List<Person> getAllPersons() {
-		List<Person> persons=new ArrayList<>();
-		iPersonRepository.findAll().forEach(e->persons.add(e));
-		return persons;
+		return iPersonRepository.findAll();
 	}
 
-	
 }

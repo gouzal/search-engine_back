@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -45,9 +44,7 @@ public class RevisionServiceImp implements IRevisionService {
 
 	@Override
 	public List<Revision> getAllRevisions() {
-		List<Revision> revisions = new ArrayList<>();
-		iRevisionRepository.findAll().forEach(e -> revisions.add(e));
-		return revisions;
+		return iRevisionRepository.findAll();
 	}
 
 }

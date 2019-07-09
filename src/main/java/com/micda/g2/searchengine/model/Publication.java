@@ -41,9 +41,9 @@ public class Publication extends Auditable<Integer> {
     @ManyToOne(targetEntity = PublicationState.class)
     private PublicationState state;
     
-    @ManyToOne
+    @ManyToOne(targetEntity = Professor.class)
     @JoinColumn(name = "supervisor_id")
-    private Person supervisor;
+    private Professor supervisor;
     
     @ManyToOne(targetEntity = Student.class)
     @JoinColumn(name = "student_id")
@@ -116,11 +116,11 @@ public class Publication extends Auditable<Integer> {
 		this.state = state;
 	}
 
-	public Person getSupervisor() {
+	public Professor getSupervisor() {
 		return supervisor;
 	}
 
-	public void setSupervisor(Person supervisor) {
+	public void setSupervisor(Professor supervisor) {
 		this.supervisor = supervisor;
 	}
 
@@ -131,5 +131,13 @@ public class Publication extends Auditable<Integer> {
 	public void setMainAuthor(Student mainAuthor) {
 		this.mainAuthor = mainAuthor;
 	}
+
+//	public List<Revision> getRevisions() {
+//		return revisions;
+//	}
+//
+//	public void setRevisions(List<Revision> revisions) {
+//		this.revisions = revisions;
+//	}
 
 }
