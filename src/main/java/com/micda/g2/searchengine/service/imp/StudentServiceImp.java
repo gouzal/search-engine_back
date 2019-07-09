@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -45,9 +44,7 @@ public class StudentServiceImp implements IStudentService {
 
 	@Override
 	public List<Student> getAllStudents() {
-		List<Student> students = new ArrayList<>();
-		iStudentRepository.findAll().forEach(e -> students.add(e));
-		return students;
+		return iStudentRepository.findAll();
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -44,9 +43,7 @@ public class PublicationKeywordServiceImp implements IPublicationKeywordService 
 
 	@Override
 	public List<PublicationKeyword> getAllPublicationKeywords() {
-		List<PublicationKeyword> publicationKeywords = new ArrayList<>();
-		iPublicationKeywordRepository.findAll().forEach(e -> publicationKeywords.add(e));
-		return publicationKeywords;
+		return iPublicationKeywordRepository.findAll();
 	}
 
 }

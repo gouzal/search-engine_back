@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -21,7 +20,7 @@ public class EmployeeServiceImp implements IEmployeeService {
 
 	@Override
 	public Employee addEmployee(Employee employee) {
-	return	this.iEmployeeRepository.save(employee);
+		return this.iEmployeeRepository.save(employee);
 	}
 
 	@Override
@@ -44,10 +43,7 @@ public class EmployeeServiceImp implements IEmployeeService {
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		List<Employee> employees=new ArrayList<>();
-		iEmployeeRepository.findAll().forEach(e->employees.add(e));
-		return employees;
+		return iEmployeeRepository.findAll();
 	}
 
-	
 }

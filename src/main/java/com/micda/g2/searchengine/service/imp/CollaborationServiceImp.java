@@ -1,6 +1,5 @@
 package com.micda.g2.searchengine.service.imp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -21,7 +20,7 @@ public class CollaborationServiceImp implements ICollaborationService {
 
 	@Override
 	public Collaboration addCollaboration(Collaboration collaboration) {
-	return	this.iCollaborationRepository.save(collaboration);
+		return this.iCollaborationRepository.save(collaboration);
 	}
 
 	@Override
@@ -41,15 +40,11 @@ public class CollaborationServiceImp implements ICollaborationService {
 		return this.iCollaborationRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Collaboration with Id:" + id + " Not Found"));
 
-
 	}
 
 	@Override
 	public List<Collaboration> getAllCollaborations() {
-		List<Collaboration> collaborations=new ArrayList<>();
-		iCollaborationRepository.findAll().forEach(e->collaborations.add(e));
-		return collaborations;
+		return iCollaborationRepository.findAll();
 	}
 
-	
 }
