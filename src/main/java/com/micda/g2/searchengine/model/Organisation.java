@@ -27,9 +27,6 @@ public class Organisation  extends Auditable<Integer> {
     private String website;
     private String email;
 
-    @OneToMany(mappedBy = "organisation")
-    private List<OrganisationDepartment> organisationDepartments;
-
 	public int getId() {
 		return id;
 	}
@@ -76,14 +73,6 @@ public class Organisation  extends Auditable<Integer> {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public List<OrganisationDepartment> getOrganisationDepartments() {
-		return organisationDepartments;
-	}
-
-	public void setOrganisationDepartments(List<OrganisationDepartment> organisationDepartments) {
-		this.organisationDepartments = organisationDepartments;
 	}
     
 }

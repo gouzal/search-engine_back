@@ -46,9 +46,6 @@ public class Publication extends Auditable<Integer>{
     @ManyToOne(targetEntity = Person.class)
     @JoinColumn(name = "student_id")
     private Person mainAuthor;
-    
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "publication")
-    private List<Revision> revisions = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -128,14 +125,6 @@ public class Publication extends Auditable<Integer>{
 
 	public void setMainAuthor(Person mainAuthor) {
 		this.mainAuthor = mainAuthor;
-	}
-
-	public List<Revision> getRevisions() {
-		return revisions;
-	}
-
-	public void setRevisions(List<Revision> revisions) {
-		this.revisions = revisions;
 	}
 
 }
