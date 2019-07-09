@@ -3,22 +3,23 @@ package com.micda.g2.searchengine.service.imp;
 import com.micda.g2.searchengine.model.Professor;
 import com.micda.g2.searchengine.service.IMailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 public class MailServiceImpl implements IMailService {
 
+    private JavaMailSender javaMailSender;
 
     @Autowired
     public ProfessorServiceImp professorServiceImp;
 
     @Autowired
-    public MailService(JavaMailSender javaMailSender) {
+    public void MailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
-
-
-    public void sendEmail(int profID) throws MailException {
+    @Override
+    public void sendEmail(int profID)  {
 
         /*
          * This JavaMailSender Interface is used to send Mail in Spring Boot. This
