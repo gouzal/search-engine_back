@@ -41,9 +41,9 @@ public class Publication extends Auditable<Integer> {
     @ManyToOne(targetEntity = PublicationState.class)
     private PublicationState state;
     
-    @ManyToOne
+    @ManyToOne(targetEntity = Professor.class)
     @JoinColumn(name = "supervisor_id")
-    private Person supervisor;
+    private Professor supervisor;
     
     @ManyToOne(targetEntity = Student.class)
     @JoinColumn(name = "student_id")
@@ -52,84 +52,78 @@ public class Publication extends Auditable<Integer> {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "publication")
     private List<Revision> revisions = new ArrayList<>();
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getResume() {
-		return resume;
-	}
-
-	public void setResume(String resume) {
-		this.resume = resume;
-	}
-
-	public Date getStart() {
-		return start;
-	}
-
-	public void setStart(Date start) {
-		this.start = start;
-	}
-
-	public Date getEnd() {
-		return end;
-	}
-
-	public void setEnd(Date end) {
-		this.end = end;
-	}
-
-	public String getFinalVersion() {
-		return finalVersion;
-	}
-
-	public void setFinalVersion(String finalVersion) {
-		this.finalVersion = finalVersion;
-	}
-
-	public boolean isPublished() {
-		return isPublished;
-	}
-
-	public void setPublished(boolean isPublished) {
-		this.isPublished = isPublished;
-	}
-
-	public PublicationState getState() {
-		return state;
-	}
-
-	public void setState(PublicationState state) {
-		this.state = state;
-	}
-
-	public Person getSupervisor() {
-		return supervisor;
-	}
-
-	public void setSupervisor(Person supervisor) {
-		this.supervisor = supervisor;
-	}
-
-	public Student getMainAuthor() {
-		return mainAuthor;
-	}
-
-	public void setMainAuthor(Student mainAuthor) {
-		this.mainAuthor = mainAuthor;
-	}
+//	public int getId() {
+//		return id;
+//	}
+//
+//	public void setId(int id) {
+//		this.id = id;
+//	}
+//
+//	public String getTitle() {
+//		return title;
+//	}
+//
+//	public void setTitle(String title) {
+//		this.title = title;
+//	}
+//
+//	public String getResume() {
+//		return resume;
+//	}
+//
+//	public void setResume(String resume) {
+//		this.resume = resume;
+//	}
+//
+//	public Date getStart() {
+//		return start;
+//	}
+//
+//	public void setStart(Date start) {
+//		this.start = start;
+//	}
+//
+//	public Date getEnd() {
+//		return end;
+//	}
+//
+//	public void setEnd(Date end) {
+//		this.end = end;
+//	}
+//
+//	public String getFinalVersion() {
+//		return finalVersion;
+//	}
+//
+//	public void setFinalVersion(String finalVersion) {
+//		this.finalVersion = finalVersion;
+//	}
+//
+//	public boolean isPublished() {
+//		return isPublished;
+//	}
+//
+//	public void setPublished(boolean isPublished) {
+//		this.isPublished = isPublished;
+//	}
+//
+//	public PublicationState getState() {
+//		return state;
+//	}
+//
+//	public void setState(PublicationState state) {
+//		this.state = state;
+//	}
+//
+//
+//
+//	public Student getMainAuthor() {
+//		return mainAuthor;
+//	}
+//
+//	public void setMainAuthor(Student mainAuthor) {
+//		this.mainAuthor = mainAuthor;
+//	}
 
 }
